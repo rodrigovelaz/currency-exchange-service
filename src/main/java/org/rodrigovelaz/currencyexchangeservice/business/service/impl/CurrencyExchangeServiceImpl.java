@@ -40,7 +40,7 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
 	
 	@Override
 	public CurrencyExchange findByFromAndTo(Currency currencyFrom, Currency currencyTo) throws CurrencyExchangeException {
-		return this.currencyExchangeRepository.findByFromAndTo(currencyFrom, currencyTo);
+		return this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
 	}
 	
 	@Override
@@ -63,13 +63,13 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
 		}
 		
 		// Direct rate
-		CurrencyExchange currencyExchange = this.currencyExchangeRepository.findByFromAndTo(currencyFrom, currencyTo);
+		CurrencyExchange currencyExchange = this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
 		if (currencyExchange != null) {
 			return currencyExchange.getRate();
 		}
 		
 		// Inverse rate
-		currencyExchange = this.currencyExchangeRepository.findByFromAndTo(currencyTo, currencyFrom);
+		currencyExchange = this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyTo, currencyFrom);
 		if (currencyExchange != null) {
 			return 1/currencyExchange.getRate();
 		}
@@ -115,7 +115,7 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
 	@Override
 	public synchronized CurrencyExchange updateCurrencyExchange(Currency currencyFrom, Currency currencyTo, Double rate) {
 		
-		CurrencyExchange currencyExchange = this.currencyExchangeRepository.findByFromAndTo(currencyFrom, currencyTo);
+		CurrencyExchange currencyExchange = this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
 
 		if (currencyExchange == null) {
 			
