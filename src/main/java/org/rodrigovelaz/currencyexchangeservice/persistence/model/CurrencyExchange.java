@@ -6,10 +6,8 @@ import java.util.Currency;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="currency_exchange")
 public class CurrencyExchange {
 
 	@Id
