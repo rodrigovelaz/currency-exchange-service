@@ -46,14 +46,12 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!-- Spring Cloud Eureka Client -->
+		<!-- Spring Cloud -->
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
 		</dependency>
-
-		<!-- Config -->
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
