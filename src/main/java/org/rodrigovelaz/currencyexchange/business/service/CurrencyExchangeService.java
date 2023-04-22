@@ -1,13 +1,13 @@
-package org.rodrigovelaz.currencyexchangeservice.business.service;
+package org.rodrigovelaz.currencyexchange.business.service;
 
 import java.time.LocalDateTime;
 import java.util.Currency;
 
 import org.apache.log4j.Logger;
-import org.rodrigovelaz.currencyexchangeservice.business.exception.CurrencyExchangeException;
-import org.rodrigovelaz.currencyexchangeservice.persistence.entity.CurrencyExchange;
-import org.rodrigovelaz.currencyexchangeservice.persistence.repository.CurrencyExchangeRepository;
-import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponse;
+import org.rodrigovelaz.currencyexchange.business.exception.CurrencyExchangeException;
+import org.rodrigovelaz.currencyexchange.persistence.repository.CurrencyExchangeRepository;
+import org.rodrigovelaz.currencyexchange.persistence.entity.CurrencyExchange;
+import org.rodrigovelaz.currencyexchange.presentation.json.response.CurrencyExchangeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

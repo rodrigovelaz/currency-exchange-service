@@ -1,14 +1,14 @@
-package org.rodrigovelaz.currencyexchangeservice.presentation.controller;
+package org.rodrigovelaz.currencyexchange.presentation.controller;
 
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
-import org.rodrigovelaz.currencyexchangeservice.business.exception.CurrencyExchangeException;
-import org.rodrigovelaz.currencyexchangeservice.business.service.CurrencyExchangeService;
-import org.rodrigovelaz.currencyexchangeservice.persistence.entity.CurrencyExchange;
-import org.rodrigovelaz.currencyexchangeservice.presentation.json.request.UpdateRateRequest;
-import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponse;
+import org.rodrigovelaz.currencyexchange.presentation.json.request.UpdateRateRequest;
+import org.rodrigovelaz.currencyexchange.business.exception.CurrencyExchangeException;
+import org.rodrigovelaz.currencyexchange.business.service.CurrencyExchangeService;
+import org.rodrigovelaz.currencyexchange.persistence.entity.CurrencyExchange;
+import org.rodrigovelaz.currencyexchange.presentation.json.response.CurrencyExchangeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

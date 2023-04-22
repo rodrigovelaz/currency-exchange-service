@@ -1,4 +1,4 @@
-package org.rodrigovelaz.currencyexchangeservice.presentation.json.response;
+package org.rodrigovelaz.currencyexchange.presentation.json.response;
 
 import java.util.Currency;
 

@@ -1,4 +1,4 @@
-package org.rodrigovelaz.currencyexchangeservice.business.exception;
+package org.rodrigovelaz.currencyexchange.business.exception;
 
 public class CurrencyExchangeException extends Exception {
 

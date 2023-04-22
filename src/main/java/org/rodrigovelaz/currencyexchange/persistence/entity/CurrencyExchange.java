@@ -1,4 +1,4 @@
-package org.rodrigovelaz.currencyexchangeservice.persistence.entity;
+package org.rodrigovelaz.currencyexchange.persistence.entity;
 
 import java.time.LocalDateTime;
 import java.util.Currency;
