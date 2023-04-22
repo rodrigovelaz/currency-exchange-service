@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  db:
+    image: mysql/mysql-server:5.7
+    ports:
+      - "38083:3306"
+    environment:
+      MYSQL_DATABASE: 'currency_exchange'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_ROOT_HOST: '%'
