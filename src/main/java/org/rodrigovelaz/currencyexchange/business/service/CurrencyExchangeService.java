@@ -10,18 +10,16 @@ import org.rodrigovelaz.currencyexchange.persistence.entity.CurrencyExchange;
 import org.rodrigovelaz.currencyexchange.presentation.json.response.CurrencyExchangeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 
 @Service
-@Transactional
 public class CurrencyExchangeService {
 
 	private Logger logger = Logger.getLogger(this.getClass());
 	
 	@Autowired
-	private CurrencyExchangeRepository currencyExchangeRepository;
+	private CurrencyExchangeRepository repository;
 	
 	private CurrencyExchangeResponse create(Currency currencyFrom, Currency currencyTo, Double amountFrom, Double rate) {
 		
@@ -37,7 +35,7 @@ public class CurrencyExchangeService {
 	}
 	
 	public CurrencyExchange findByFromAndTo(Currency currencyFrom, Currency currencyTo) throws CurrencyExchangeException {
-		return this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
+		return this.repository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
 	}
 	
 	public CurrencyExchangeResponse exchange(Currency currencyFrom, Currency currencyTo, Double amount) throws CurrencyExchangeException {
@@ -59,13 +57,13 @@ public class CurrencyExchangeService {
 		}
 		
 		// Direct rate
-		CurrencyExchange currencyExchange = this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
+		CurrencyExchange currencyExchange = this.repository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
 		if (currencyExchange != null) {
 			return currencyExchange.getRate();
 		}
 		
 		// Inverse rate
-		currencyExchange = this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyTo, currencyFrom);
+		currencyExchange = this.repository.findByCurrencyFromAndCurrencyTo(currencyTo, currencyFrom);
 		if (currencyExchange != null) {
 			return 1/currencyExchange.getRate();
 		}
@@ -110,7 +108,7 @@ public class CurrencyExchangeService {
 
 	public synchronized CurrencyExchange updateCurrencyExchange(Currency currencyFrom, Currency currencyTo, Double rate) {
 		
-		CurrencyExchange currencyExchange = this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
+		CurrencyExchange currencyExchange = this.repository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
 
 		if (currencyExchange == null) {
 			
@@ -121,14 +119,14 @@ public class CurrencyExchangeService {
 			currencyExchange.setRate(rate);
 			
 			logger.info("Creating currencyExchange: " + new Gson().toJson(currencyExchange));
-			currencyExchange = this.currencyExchangeRepository.save(currencyExchange);
+			currencyExchange = this.repository.save(currencyExchange);
 		}
 		else if (!currencyExchange.getRate().equals(rate)) {
 			
 			currencyExchange.setLastUpdateDate(LocalDateTime.now());
 			currencyExchange.setRate(rate);
 				
-			currencyExchange = this.currencyExchangeRepository.save(currencyExchange);
+			currencyExchange = this.repository.save(currencyExchange);
 			logger.info("Updating currencyExchange: " + new Gson().toJson(currencyExchange));
 		}
 		
