@@ -1,5 +1,6 @@
 package org.rodrigovelaz.currencyexchange.config;
 
+import org.rodrigovelaz.currencyexchange.CurrencyExchangeApplication;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("org.rodrigovelaz"))
+				.apis(RequestHandlerSelectors.basePackage(CurrencyExchangeApplication.class.getPackage().getName()))
 				.build();
 	}
 	
