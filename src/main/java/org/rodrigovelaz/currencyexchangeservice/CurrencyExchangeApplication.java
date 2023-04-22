@@ -16,10 +16,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableJpaRepositories
 @EnableSwagger2
 @EntityScan(basePackageClasses = {Jsr310JpaConverters.class}, basePackages = {"org.rodrigovelaz" })
-public class CurrencyExchangeServiceApplication {
+public class CurrencyExchangeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CurrencyExchangeServiceApplication.class, args);
+		SpringApplication.run(CurrencyExchangeApplication.class, args);
 	}
 
 }
