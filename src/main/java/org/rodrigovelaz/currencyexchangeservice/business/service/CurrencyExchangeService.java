@@ -5,7 +5,7 @@ import java.util.Currency;
 
 import org.apache.log4j.Logger;
 import org.rodrigovelaz.currencyexchangeservice.business.exception.CurrencyExchangeException;
-import org.rodrigovelaz.currencyexchangeservice.persistence.model.CurrencyExchange;
+import org.rodrigovelaz.currencyexchangeservice.persistence.entity.CurrencyExchange;
 import org.rodrigovelaz.currencyexchangeservice.persistence.repository.CurrencyExchangeRepository;
 import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponseJson;
 import org.springframework.beans.factory.annotation.Autowired;

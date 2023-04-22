@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.rodrigovelaz.currencyexchangeservice.business.exception.CurrencyExchangeException;
 import org.rodrigovelaz.currencyexchangeservice.business.service.CurrencyExchangeService;
-import org.rodrigovelaz.currencyexchangeservice.persistence.model.CurrencyExchange;
+import org.rodrigovelaz.currencyexchangeservice.persistence.entity.CurrencyExchange;
 import org.rodrigovelaz.currencyexchangeservice.presentation.json.request.UpdateRateRequest;
 import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponseJson;
 import org.springframework.beans.factory.annotation.Autowired;
