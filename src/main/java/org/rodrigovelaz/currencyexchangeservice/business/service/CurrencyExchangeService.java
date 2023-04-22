@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import org.rodrigovelaz.currencyexchangeservice.business.exception.CurrencyExchangeException;
 import org.rodrigovelaz.currencyexchangeservice.persistence.entity.CurrencyExchange;
 import org.rodrigovelaz.currencyexchangeservice.persistence.repository.CurrencyExchangeRepository;
-import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponseJson;
+import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,11 +23,11 @@ public class CurrencyExchangeService {
 	@Autowired
 	private CurrencyExchangeRepository currencyExchangeRepository;
 	
-	private CurrencyExchangeResponseJson create(Currency currencyFrom, Currency currencyTo, Double amountFrom, Double rate) {
+	private CurrencyExchangeResponse create(Currency currencyFrom, Currency currencyTo, Double amountFrom, Double rate) {
 		
 		Double amountToRounded = this.roundUp(amountFrom * rate, currencyTo);
 		
-		CurrencyExchangeResponseJson response = new CurrencyExchangeResponseJson();
+		CurrencyExchangeResponse response = new CurrencyExchangeResponse();
 		response.setAmountFrom(amountFrom);
 		response.setCurrencyFrom(currencyFrom);
 		response.setAmountTo(amountToRounded);
@@ -40,7 +40,7 @@ public class CurrencyExchangeService {
 		return this.currencyExchangeRepository.findByCurrencyFromAndCurrencyTo(currencyFrom, currencyTo);
 	}
 	
-	public CurrencyExchangeResponseJson exchange(Currency currencyFrom, Currency currencyTo, Double amount) throws CurrencyExchangeException {
+	public CurrencyExchangeResponse exchange(Currency currencyFrom, Currency currencyTo, Double amount) throws CurrencyExchangeException {
 
 		// Simple rate
 		Double rate = this.getSimpleRate(currencyFrom, currencyTo);

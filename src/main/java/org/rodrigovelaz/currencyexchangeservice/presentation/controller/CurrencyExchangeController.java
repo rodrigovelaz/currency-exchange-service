@@ -8,7 +8,7 @@ import org.rodrigovelaz.currencyexchangeservice.business.exception.CurrencyExcha
 import org.rodrigovelaz.currencyexchangeservice.business.service.CurrencyExchangeService;
 import org.rodrigovelaz.currencyexchangeservice.persistence.entity.CurrencyExchange;
 import org.rodrigovelaz.currencyexchangeservice.presentation.json.request.UpdateRateRequest;
-import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponseJson;
+import org.rodrigovelaz.currencyexchangeservice.presentation.json.response.CurrencyExchangeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,18 +25,18 @@ public class CurrencyExchangeController {
 	private CurrencyExchangeService currencyService;
 	
 	@RequestMapping(method=RequestMethod.GET, value="/from/{currencyFrom}/to/{currencyTo}/{amountFrom:.+}")
-    public CurrencyExchangeResponseJson exchange(@PathVariable Currency currencyFrom, @PathVariable Currency currencyTo, @PathVariable Double amountFrom) throws CurrencyExchangeException {
+    public CurrencyExchangeResponse exchange(@PathVariable Currency currencyFrom, @PathVariable Currency currencyTo, @PathVariable Double amountFrom) throws CurrencyExchangeException {
 	
 		return this.currencyService.exchange(currencyFrom, currencyTo, amountFrom);
     }
 	
 	@RequestMapping(method=RequestMethod.GET, value="/from/{currencyFrom}/to/{currencyTo}")
-    public List<CurrencyExchangeResponseJson> exchange(@PathVariable Currency currencyFrom, @PathVariable Currency currencyTo, @RequestParam("amounts") List<Double> amounts) throws CurrencyExchangeException {
+    public List<CurrencyExchangeResponse> exchange(@PathVariable Currency currencyFrom, @PathVariable Currency currencyTo, @RequestParam("amounts") List<Double> amounts) throws CurrencyExchangeException {
 	
-		List<CurrencyExchangeResponseJson> response = new ArrayList<CurrencyExchangeResponseJson>();
+		List<CurrencyExchangeResponse> response = new ArrayList<CurrencyExchangeResponse>();
 		
 		for (Double amountFrom : amounts) {
-			CurrencyExchangeResponseJson exc = this.currencyService.exchange(currencyFrom, currencyTo, amountFrom);
+			CurrencyExchangeResponse exc = this.currencyService.exchange(currencyFrom, currencyTo, amountFrom);
 			response.add(exc);
 		}
 		
