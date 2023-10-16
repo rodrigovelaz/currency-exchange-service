@@ -21,6 +21,14 @@ public class CurrencyExchangeService {
 	@Autowired
 	private CurrencyExchangeRepository repository;
 	
+	public CurrencyExchange getById(Long id) {
+		return this.repository.findOne(id);
+	}
+	
+	public void deleteAll() {
+		this.repository.deleteAll();
+	}
+	
 	private CurrencyExchangeResponse create(Currency currencyFrom, Currency currencyTo, Double amountFrom, Double rate) {
 		
 		Double amountToRounded = this.roundUp(amountFrom * rate, currencyTo);
